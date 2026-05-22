@@ -1,0 +1,12 @@
+.venv/
+.claude/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+src/brushfire_api/models.py
+src/brushfire_api/api.py
+tests/test_api.py

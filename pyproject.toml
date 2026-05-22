@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.datamodel-codegen]
+url = "https://api.brushfire.com/swagger/2025-07-22/swagger.json"
+output = "src/brushfire_api/models.py"
+output-model-type = "pydantic_v1.BaseModel"
+target-python-version = "3.6"
+
+[tool.generate-api]
+output = "src/brushfire_api/api.py"
+test-output = "tests/test_api.py"

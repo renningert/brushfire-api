@@ -1,0 +1,14 @@
+pipelines:
+  tags:
+    'v*':
+      - step:
+          name: Deploy to PyPI
+          image: python:3.6
+          script:
+            - pip install toml datamodel-codegen build twine
+            - python generate_api.py
+            - python -m build
+            - twine upload dist/*
+          env:
+            TWINE_USERNAME: __token__
+            TWINE_PASSWORD: $PYPI_TOKEN
