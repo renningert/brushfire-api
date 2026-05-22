@@ -8,6 +8,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v3
 
@@ -16,7 +18,7 @@ jobs:
           python-version: '3.6'
 
       - name: Install dependencies
-        run: pip install toml datamodel-codegen build twine
+        run: pip install toml datamodel-codegen build
 
       - name: Generate client
         run: python generate_api.py
@@ -25,7 +27,4 @@ jobs:
         run: python -m build
 
       - name: Publish to PyPI
-        run: twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        uses: pypa/gh-action-pypi-publish@release/v1
