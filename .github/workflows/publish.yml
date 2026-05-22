@@ -18,10 +18,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install toml "datamodel-code-generator==0.13.5" build
-
-      - name: Generate client
-        run: python generate_api.py
+        run: pip install build
 
       - name: Build
         run: python -m build
